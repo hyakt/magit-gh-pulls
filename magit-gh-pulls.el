@@ -457,9 +457,9 @@ option, or inferred from remotes."
   current repository. Returns nil if there is not a pull request
   template file. A pull request template file can be placed in
   the repository root directory, or in a .github/ directory."
-  (car (or (directory-files (magit-toplevel) t "^PULL_REQUEST_TEMPLATE")
+  (car (or (directory-files (magit-toplevel) t "^\\(PULL_REQUEST_TEMPLATE\\|pull_request_template\\)")
            (ignore-errors (directory-files (format "%s.github/" (magit-toplevel))
-                                           t "^PULL_REQUEST_TEMPLATE")))))
+                                           t "^\\(PULL_REQUEST_TEMPLATE\\|pull_request_template\\)")))))
 
 (defun magit-gh-pulls-init-pull-editor (proj base head callback)
   "Create a new buffer for editing this pull request and switch
